@@ -1,0 +1,81 @@
+# ==========================================
+# SF2-Trained-Bot Git Ignore Rules
+# Only code, configs, assets & models tracked.
+# ==========================================
+
+# --- Game Files & Emulators (Do NOT push to GitHub) ---
+single-player/
+two-players/
+*.smc
+*.sfc
+*.bin
+*.iso
+*.State
+*.State.bak
+bizhawk_prereqs.exe
+
+# --- Executables & Binary Archives ---
+*.exe
+*.dll
+*.so
+*.so.*
+*.dylib
+*.pdb
+*.gz
+*.7z
+*.zip
+*.tar
+
+# --- Large Datasets & Match Logs ---
+# Keep folder structure via .gitkeep, ignore huge CSV files
+recordings/*.csv
+match_logs/*.csv
+cloud_upload/
+flattened_window_datasets/*.csv
+
+# --- Experiment Subdirectories in models/ ---
+models/Model1/
+models/Model2/
+models/all_characters_main_6_*/
+models/_best_tmp.keras
+
+# --- Python Environments & Caches ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+venv-tf/
+env/
+virtualenv/
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# --- Jupyter Notebook Checkpoints ---
+.ipynb_checkpoints
+
+# --- Temporary & Scratch Files ---
+temp/
+scratch/
+*.tmp
+*.log
+
+# --- IDEs & OS Files ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

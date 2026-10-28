@@ -1,0 +1,11 @@
+# Core dependencies for SF2-Trained-Bot (Python 3.12+ 64-bit)
+# Both runtime inference and training pipelines
+
+tensorflow==2.21.0
+keras==3.15.1
+numpy==2.5.4
+pandas==3.0.6
+scikit-learn==1.9.1
+joblib==1.6.0
+h5py==3.14.0
+pynput>=1.7.0
