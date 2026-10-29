@@ -42,7 +42,7 @@
 
 ---
 
-## 🏆 Competition Overview & Criteria
+##  Competition Overview & Criteria
 
 The bot was developed for the **Street Fighter II Turbo AI Competition** (24-hour hackathon format):
 * **Format:** Every match is our bot vs. an opponent's bot in a head-to-head format inside BizHawk.
