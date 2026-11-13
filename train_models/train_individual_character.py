@@ -8,30 +8,39 @@ from tensorflow.keras import layers, models, callbacks
 
 #defining constants
 WINDOW_SIZE = 6
+
 STATE_FEATURES = ['timer', 'fight_result', 'has_round_started', 'is_round_over','player1_id', 'p1_health', 'p1_x', 'p1_y', 'p1_jumping', 'p1_crouching', 'p1_in_move', 'p1_move_id','player2_id', 'p2_health', 'p2_x', 'p2_y', 'p2_jumping', 'p2_crouching', 'p2_in_move', 'p2_move_id','diff_x', 'diff_y', 'diff_health']
+
 #make a features array for model to know what are the features
+
 FEATURE_COLS = []
 for t in range(WINDOW_SIZE-1, -1, -1):
     suffix = f"_t-{t}"
     for feat in STATE_FEATURES:
         FEATURE_COLS.append(feat + suffix)
 BUTTONS = ['up', 'down', 'right', 'left', 'y', 'b', 'x', 'a', 'l', 'r']
+
 #buttons to be predicted by the model
 P1_BUTTON_COLS = [f'player1_buttons_{b}' for b in BUTTONS]
 
 
 def train_model(csv_path: str, model_path: str):
+    
     #load dataset
     df = pd.read_csv(csv_path)
 
     #select rows where buttons are pressed
     df_pos = df[df[P1_BUTTON_COLS].sum(axis=1) > 0]
+   
     #select rows where buttons are not pressed
     df_neg_all = df[df[P1_BUTTON_COLS].sum(axis=1) == 0]
+    
     #get a 2:1 for positives to negatives to reduce class imbalance
     neg_count = min(len(df_neg_all), len(df_pos) * 2)
+    
     #get samples of negatives
     df_neg = df_neg_all.sample(n=neg_count, random_state=42)
+    
     #concatenate positives and negatives and shuffle
     df = pd.concat([df_pos, df_neg]).sample(frac=1, random_state=42).reset_index(drop=True)
 
@@ -39,9 +48,11 @@ def train_model(csv_path: str, model_path: str):
     FIGHT_MAP = {'NOT_OVER': 0, 'P1': 1, 'P2': 2}
     BOOL_MAP = {False: 0, True: 1, 'False': 0, 'True': 1}
     for t in range(WINDOW_SIZE):
+        
         # map fight_result
         col_fr = f'fight_result_t-{t}'
         df[col_fr] = df[col_fr].map(FIGHT_MAP)
+        
         # map booleans
         for bf in ['has_round_started','is_round_over','p1_jumping','p1_crouching','p1_in_move','p2_jumping','p2_crouching','p2_in_move']:
             col_b = f'{bf}_t-{t}'
