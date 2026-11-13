@@ -9,6 +9,9 @@
 **SF2-Turbo-Bot-Training** is a competitive AI agent built to play *Street Fighter II Turbo* on the Super Nintendo Entertainment System (SNES) via the BizHawk emulator socket protocol. The bot learns entirely from human gameplay demonstrations using deep imitation learning, predicting 60 FPS joystick movements and attack buttons with low latency (~2ms per frame) while strictly adhering to esports competition rules.
 
 ---
+## Collaborators
+Uzair Majeed
+Muhammad Hashir
 
 ## ⚔️ Competition Highlights
 
@@ -266,7 +269,3 @@ SF2-Trained-Bot/
 
 ## 📜 License & Acknowledgments
 Built for competitive esports AI research and the Street Fighter II Turbo AI Competition. Developed with TensorFlow, Keras, and BizHawk.
-
-## Collaborators
-Uzair Majeed
-Muhammad Hashir
